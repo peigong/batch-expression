@@ -1,0 +1,39 @@
+{
+  "name": "batch-expression",
+  "version": "0.0.1",
+  "description": "批量数据表达式引擎",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "NODE_ENV=production ./node_modules/.bin/gulp",
+    "test": "NODE_ENV=production ./node_modules/.bin/gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peigong/batch-expression.git"
+  },
+  "keywords": [
+    "批量数据",
+    "表达式",
+    "表达式引擎"
+  ],
+  "author": "周培公 <peigong@foxmail.com>",
+  "license": "Apache License 2.0",
+  "bugs": {
+    "url": "https://github.com/peigong/batch-expression/issues"
+  },
+  "homepage": "https://github.com/peigong/batch-expression#readme",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.42",
+    "@babel/preset-env": "^7.0.0-beta.42",
+    "@babel/register": "^7.0.0-beta.42",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-load-plugins": "^1.5.0",
+    "jasmine-core": "^3.1.0",
+    "karma": "^2.0.0",
+    "karma-jasmine": "^1.1.1",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^4.0.0-beta.2"
+  }
+}

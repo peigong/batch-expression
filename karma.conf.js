@@ -37,7 +37,7 @@ module.exports = function(config) {
     rollupPreprocessor: {
         plugins: [],
         output: {
-            format: 'cjs',
+            format: 'iife',
             sourcemap: 'inline'
         }
     },

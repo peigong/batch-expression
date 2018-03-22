@@ -1,5 +1,8 @@
 // Karma configuration
 // Generated on Wed Mar 21 2018 17:20:35 GMT+0800 (CST)
+const pkg = require('./package.json');
+// const conf = require('./build/conf');
+const babel = require('rollup-plugin-babel');
 
 module.exports = function(config) {
   config.set({
@@ -15,7 +18,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*.spec.es6'
+        { pattern: 'test/**/*.spec.es6', watched: false }
     ],
 
 
@@ -28,13 +31,49 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'src/**/*.es6': ['rollupBabel', 'coverage'],
+        'test/**/*.spec.es6': ['rollupBabel']
     },
-
+    rollupPreprocessor: {
+        plugins: [],
+        output: {
+            format: 'cjs',
+            sourcemap: 'inline'
+        }
+    },
+    customPreprocessors: {
+        // Clones the base preprocessor, but overwrites
+        // its options with those defined below...
+        rollupBabel: {
+            base: 'rollup',
+            options: {
+                // In this case, to use a different transpiler:
+                plugins: [
+                    babel({
+                        'presets': [
+                            [
+                                '@babel/preset-env', {
+                                    'targets': {
+                                        'browsers': ['chrome >= 64']
+                                    },
+                                    'modules': false
+                                }
+                            ]
+                        ]
+                    })
+                ]
+            }
+        }
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+    coverageReporter: {
+        type : 'html',
+        dir : 'coverage/'
+    },
 
 
     // web server port
@@ -56,12 +95,14 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [],
+    browsers: [
+        // 'Chrome'
+    ],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous

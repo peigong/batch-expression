@@ -27,7 +27,6 @@ const ENV = {
 };
 
 function getPlugins(key){
-    console.log(key);
     key = key || 'development';
     let env = ENV[key];
     return [].concat(env.prePlugins, basePlugins, env.postPlagins);

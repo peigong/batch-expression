@@ -32,7 +32,10 @@
     "gulp-load-plugins": "^1.5.0",
     "jasmine-core": "^3.1.0",
     "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.1.1",
+    "karma-rollup-preprocessor": "^5.1.1",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^4.0.0-beta.2"
   }

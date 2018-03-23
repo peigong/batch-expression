@@ -16,4 +16,4 @@
 
 根据列的序号生成大写字母表示列别名。
 
-### createMapCallback 生成用于数组map方法参数的回调函数 ###
+### createCallback 生成用于数组map方法参数的回调函数 ###

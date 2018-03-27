@@ -5,6 +5,14 @@
  * @return {Function} 赋值回调函数
  */
 function createComplexCallback(field, expression){
+    if(expression){
+        return (item) => {
+            // item[field] = calculate(item, expression);
+            return item;
+        };
+    }else{
+        return (item) => item;
+    }
 }
 
 export { createComplexCallback };

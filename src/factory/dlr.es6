@@ -13,37 +13,49 @@ function createDLRCalculate(commands){
      * @return {Integer} 计算结果
      */
     return (item, expression) => {
-        let result;
-        let v = {};
-        let stack = [], temp = null, v1, v2;
-        let it = expression.shift();
-        while(it){
-            switch(it.type){
-                case ItemType.Operator:
-                    if(temp){ stack.push(temp);
-                    temp = it;
-                    break;
+        function convert(v){
+            let val = NaN;
+            switch(v.type){
                 case ItemType.Constant:
-                    if(v.hasOwnProperty('v1')){
-                        v['v2'] = it.val;
-                    }else{
-                        v['v1'] = it.val;
-                    }
+                    val = v.val;
                     break;
                 case ItemType.Field:
-                    if(v.hasOwnProperty('v1')){
-                        v['v2'] = item[it.val];
-                    }else{
-                        v['v1'] = item[it.val];
-                    }
+                    val = item[v.val];
                     break;
+                case ItemType.Operator:
                 default:
+            }
+            return val;
+        }
+        function exec(o, v1, v2){
+            console.log(o.val);
+            let val = commands[o.val](convert(v1), convert(v2));
+            return { type: ItemType.Constant, val: val, origin: val };
+        }
+
+        let flag = false; // 是否已经有了第一个操作数
+        let stack = [];
+        let it = expression.shift();
+        while(it){
+            if(ItemType.Operator === it.type){
+                flag = false;
+                stack.push(it);
+            }else if(flag){ // 已经有了第一个操作数，可以开始计算
+                let v2 = it;
+                let v1 = stack.pop();
+                let o = stack.pop();
+                let r = exec(o, v1, v2);
+                stack.push(r);
+            }else{
+                stack.push(it);
+                flag = true;
             }
             it = expression.shift();
         }
-        return result;
+        let result = stack.pop();
+        return result.val;
     };
 }
 
 export { createDLRCalculate };
-export default { createDLRCalculate };
+export default createDLRCalculate;

@@ -28,7 +28,6 @@ function createDLRCalculate(commands){
             return val;
         }
         function exec(o, v1, v2){
-            console.log(o.val);
             let val = commands[o.val](convert(v1), convert(v2));
             return { type: ItemType.Constant, val: val, origin: val };
         }
@@ -52,6 +51,7 @@ function createDLRCalculate(commands){
             }
             it = expression.shift();
         }
+        console.log(stack);
         let result = stack.pop();
         return result.val;
     };

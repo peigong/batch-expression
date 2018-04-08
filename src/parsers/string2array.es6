@@ -10,16 +10,16 @@ function string2array(val = ''){
     let temp = '';
     let field = false; // 数据字段开关
 
-    function push(type, val, origin){
-        items.push({ type, val, origin });
+    function push(type, val, origin, weight){
+        items.push({ type, val, origin, weight });
     }
     function clean(type = ItemType.Constant){
         if(temp){
             let val = parseFloat(temp);
             if(isNaN(val)){ // 字符串值
-                push(type, temp, temp);
+                push(type, temp, temp, 0);
             }else{
-                push(type, val, temp);
+                push(type, val, temp, 0);
             }
             temp = '';
         }
@@ -31,26 +31,26 @@ function string2array(val = ''){
         switch(c){
             case '+':
                 clean();
-                push(ItemType.Operator, 'addition', '+');
+                push(ItemType.Operator, 'addition', '+', 1);
                 break;
             case '-':
                 clean();
-                push(ItemType.Operator, 'subtraction', '-');
+                push(ItemType.Operator, 'subtraction', '-', 1);
                 break;
             case '*':
                 clean();
-                push(ItemType.Operator, 'multiplication', '*');
+                push(ItemType.Operator, 'multiplication', '*', 2);
                 break;
             case '/':
                 clean();
-                push(ItemType.Operator, 'division', '/');
+                push(ItemType.Operator, 'division', '/', 2);
                 break;
             case '(':
-                push(ItemType.Operator, '(', '(');
+                push(ItemType.Operator, '(', '(', 3);
                 break;
             case ')':
                 clean();
-                push(ItemType.Operator, ')', ')');
+                push(ItemType.Operator, ')', ')', 3);
                 break;
             case '#':
                 if(field){

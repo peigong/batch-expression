@@ -46,11 +46,11 @@ function string2array(val = ''){
                 push(ItemType.Operator, 'division', '/', 2);
                 break;
             case '(':
-                push(ItemType.Operator, '(', '(', 3);
+                push(ItemType.Operator, '(', '(', -1);
                 break;
             case ')':
                 clean();
-                push(ItemType.Operator, ')', ')', 3);
+                push(ItemType.Operator, ')', ')', -1);
                 break;
             case '#':
                 if(field){

@@ -10,20 +10,38 @@ function array2lrd(expression = []){
     let result = [];
     let stack = [];
     for(let i = 0; i < expression.length; i++){
+        let o = null;
         let it = expression[i];
         switch(it.type){
             case ItemType.Operator:
-                let o = stack.pop();
-                while(o){
-                    if(it.weight > o.weight){
-                        stack.push(o);
+                switch(it.val){
+                    case '(':
+                        stack.push(it);
                         break;
-                    }else{
-                        result.push(o);
-                    }
-                    o = stack.pop();
+                    case ')':
+                        o = stack.pop();
+                        while(o){
+                            if('(' === o.val){
+                                break;
+                            }else{
+                                result.push(o);
+                            }
+                            o = stack.pop();
+                        }
+                        break;
+                    default:
+                        o = stack.pop();
+                        while(o){
+                            if(it.weight < o.weight){
+                                result.push(o);
+                            }else{
+                                stack.push(o);
+                                break;
+                            }
+                            o = stack.pop();
+                        }
+                        stack.push(it);
                 }
-                stack.push(it);
                 break;
             case ItemType.Constant:
             case ItemType.Field:

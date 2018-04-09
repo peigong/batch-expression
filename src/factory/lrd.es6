@@ -1,28 +1,58 @@
 import ItemType from '../enums/item-type.es6';
 
 /**
- * 根据前序遍历（DLR）的表达式形式（先根遍历）创建赋值回调函数
+ * 根据后根遍历（LRD）的表达式形式创建赋值回调函数
  * @param commands {Object} 命令对象
  * @return {Function} 赋值回调函数
  */
-function createDLRCalculate(commands){
+function createLRDCalculate(commands){
     /**
-     * 根据前序遍历（DLR）的表达式形式（先根遍历）创建赋值回调函数
-     * @param item {Object} 计算的依据对象
-     * @param expression {Array} 前序遍历（DLR）的表达式形式（先根遍历）
+     * 根据后根遍历（LRD）的表达式形式创建赋值回调函数
+     * @param it {Object} 计算的依据对象
+     * @param expression {Array} 后根遍历（LRD）的表达式形式
      * @return {Integer} 计算结果
      */
-    return (item, expression) => {
+    return (it, expression) => {
+        function convert(v){
+            let result = NaN;
+            switch(v.type){
+                case ItemType.Constant:
+                    result = v.val;
+                    break;
+                case ItemType.Field:
+                    result = it[v.val];
+                    break;
+                case ItemType.Operator:
+                default:
+            }
+            return result;
+        }
         function exec(o, v1, v2){
-            console.log('%d %s %d', v1.val, o.origin, v2.val);
             let val = commands[o.val](convert(v1), convert(v2));
             return { type: ItemType.Constant, val: val, origin: val };
         }
-        let result = null;
+        let stack = [];
+        let o = expression.shift();
+        while(o){
+            switch(o.type){
+                case ItemType.Operator:
+                    let v2 = stack.pop();
+                    let v1 = stack.pop();
+                    stack.push(exec(o, v1, v2));
+                    break;
+                case ItemType.Constant:
+                case ItemType.Field:
+                    stack.push(o);
+                    break;
+                default:
+            }
+            o = expression.shift();
+        }
+        let result = stack.pop();
         return result.val;
     };
 }
 
-export { createDLRCalculate };
-export default createDLRCalculate;
+export { createLRDCalculate };
+export default createLRDCalculate;
 

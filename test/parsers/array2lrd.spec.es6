@@ -166,4 +166,36 @@ describe('测试表达式从标准数据的数组形式转换为后根遍历（L
             { type: ItemType.Operator, val: 'addition', origin: '+', weight: 1 }
         ]);
     });
+    it('完整功能 - (#foo#+2+#bar#*(#foobar#-#bar#))/#foo#', () => {
+        // (#foo#+2+#bar#*(#foobar#-#bar#))/#foo#
+        expect(array2lrd([
+            { type: ItemType.Operator, val: '(', origin: '(', weight: -1 },
+            { type: ItemType.Field, val: 'foo', origin: 'foo', weight: 0 },
+            { type: ItemType.Operator, val: 'addition', origin: '+', weight: 1 },
+            { type: ItemType.Constant, val: 2, origin: '2', weight: 0 },
+            { type: ItemType.Operator, val: 'addition', origin: '+', weight: 1 },
+            { type: ItemType.Field, val: 'bar', origin: 'bar', weight: 0 },
+            { type: ItemType.Operator, val: 'multiplication', origin: '*', weight: 2 },
+            { type: ItemType.Operator, val: '(', origin: '(', weight: -1 },
+            { type: ItemType.Field, val: 'foobar', origin: 'foobar', weight: 0 },
+            { type: ItemType.Operator, val: 'subtraction', origin: '-', weight: 1 },
+            { type: ItemType.Field, val: 'bar', origin: 'bar', weight: 0 },
+            { type: ItemType.Operator, val: ')', origin: ')', weight: -1 },
+            { type: ItemType.Operator, val: ')', origin: ')', weight: -1 },
+            { type: ItemType.Operator, val: 'division', origin: '/', weight: 2 },
+            { type: ItemType.Field, val: 'foo', origin: 'foo', weight: 0 }
+        ])).toEqual([
+            { type: ItemType.Field, val: 'foo', origin: 'foo', weight: 0 },
+            { type: ItemType.Constant, val: 2, origin: '2', weight: 0 },
+            { type: ItemType.Field, val: 'bar', origin: 'bar', weight: 0 },
+            { type: ItemType.Field, val: 'foobar', origin: 'foobar', weight: 0 },
+            { type: ItemType.Field, val: 'bar', origin: 'bar', weight: 0 },
+            { type: ItemType.Operator, val: 'subtraction', origin: '-', weight: 1 },
+            { type: ItemType.Operator, val: 'multiplication', origin: '*', weight: 2 },
+            { type: ItemType.Operator, val: 'addition', origin: '+', weight: 1 },
+            { type: ItemType.Operator, val: 'addition', origin: '+', weight: 1 },
+            { type: ItemType.Field, val: 'foo', origin: 'foo', weight: 0 },
+            { type: ItemType.Operator, val: 'division', origin: '/', weight: 2 }
+        ]);
+    });
 });

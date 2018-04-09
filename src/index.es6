@@ -1,4 +1,5 @@
 import util from './util.es6';
+import lrd2string from './parsers/lrd2string.es6';
 import { trim, preprocess } from './preprocessors/index.es6';
 import { createSimpleCallback, createComplexCallback, createMainGenerator } from './factory/index.es6';
 
@@ -8,5 +9,5 @@ const createCallback = createMainGenerator({
     createSimpleCallback,
     createComplexCallback
 });
-export { util, createCallback };
+export { util, lrd2string, createCallback };
 export default createCallback;

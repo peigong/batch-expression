@@ -62,8 +62,7 @@ function string2array(val = ''){
                 temp += c;
         }
     }
+    clean();
     return items;
-
 }
 export { string2array };
-export default string2array;

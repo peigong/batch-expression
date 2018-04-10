@@ -26,4 +26,3 @@ function createMainGenerator(commands){
 }
 
 export { createMainGenerator };
-export default createMainGenerator;

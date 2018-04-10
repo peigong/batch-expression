@@ -9,4 +9,3 @@ function division(operand1, operand2){
 }
 
 export { division };
-export default division;

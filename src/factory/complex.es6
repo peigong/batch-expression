@@ -1,7 +1,6 @@
-import createLRDCalculate from './lrd.es6';
+import { createLRDCalculate } from './lrd.es6';
 import { commands } from '../operations/index.es6';
-import string2array from '../parsers/string2array.es6';
-import array2lrd from '../parsers/array2lrd.es6';
+import { convertLRDArray } from '../parsers/index.es6';
 
 /**
  * 根据赋值字符串创建简单赋值回调函数
@@ -12,7 +11,7 @@ import array2lrd from '../parsers/array2lrd.es6';
 function createComplexCallback(field, expression){
     if(expression){
         let calculate = createLRDCalculate(commands);
-        expression = [string2array, array2lrd].reduce((expression, exec) => exec(expression), expression);
+        expression = convertLRDArray(expression);
         return (item) => {
             item[field] = calculate(item, expression);
             return item;
@@ -23,4 +22,3 @@ function createComplexCallback(field, expression){
 }
 
 export { createComplexCallback };
-export default createComplexCallback;

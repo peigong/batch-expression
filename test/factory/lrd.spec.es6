@@ -1,5 +1,5 @@
 import ItemType from '../../src/enums/item-type.es6';
-import createLRDCalculate from '../../src/factory/lrd.es6';
+import { createLRDCalculate } from '../../src/factory/lrd.es6';
 
 // (#foo#+2+#bar#*(#foobar#-#bar#))/#foo#
 describe('测试根据后根遍历（LRD）的表达式形式计算的函数', () => {

@@ -1,7 +1,7 @@
-import addition from '../operations/addition.es6';
-import subtraction from '../operations/subtraction.es6';
-import multiplication from '../operations/multiplication.es6';
-import division from '../operations/division.es6';
+import { addition } from '../operations/addition.es6';
+import { subtraction } from '../operations/subtraction.es6';
+import { multiplication } from '../operations/multiplication.es6';
+import { division } from '../operations/division.es6';
 
 let commands = {};
 
@@ -22,6 +22,3 @@ export {
     commands,
     addCommand
 };
-
-export default addition;
-

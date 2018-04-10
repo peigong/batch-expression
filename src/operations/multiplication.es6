@@ -9,4 +9,3 @@ function multiplication(operand1, operand2){
 }
 
 export { multiplication };
-export default multiplication;

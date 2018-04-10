@@ -31,9 +31,10 @@ function createLRDCalculate(commands){
             let val = commands[o.val](convert(v1), convert(v2));
             return { type: ItemType.Constant, val: val, origin: val };
         }
+
         let stack = [];
-        let o = expression.shift();
-        while(o){
+        for(let i = 0; i < expression.length; i++){
+            let o = expression[i];
             switch(o.type){
                 case ItemType.Operator:
                     let v2 = stack.pop();
@@ -46,13 +47,10 @@ function createLRDCalculate(commands){
                     break;
                 default:
             }
-            o = expression.shift();
         }
-        let result = stack.pop();
-        return result.val;
+        return stack.pop().val;
     };
 }
 
 export { createLRDCalculate };
-export default createLRDCalculate;
 

@@ -9,4 +9,3 @@ function subtraction(operand1, operand2){
 }
 
 export { subtraction };
-export default subtraction;

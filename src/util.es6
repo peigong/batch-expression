@@ -1,3 +1,5 @@
+import { convertLRDArray, convertLRDString } from './parsers/index.es6';
+
 /**
  * 根据列的序号生成大写字母表示列别名
  * @param num {Integer} 列的数字序号
@@ -18,7 +20,6 @@ function createColumnAlias(num){
     }
     return result.join('');
 }
-export { createColumnAlias };
 
 /**
  * 根据列的索引生成大写字母表示列别名
@@ -28,9 +29,11 @@ export { createColumnAlias };
 function createColumnAliasByIndex(idx){
     return createColumnAlias(idx + 1);
 }
-export { createColumnAliasByIndex };
 
 export default {
+    convertLRDArray,
+    convertLRDString,
+
     createColumnAlias,
     createColumnAliasByIndex
-}
+};

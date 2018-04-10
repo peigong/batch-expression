@@ -8,4 +8,3 @@ function multiplication(expression){
 }
 
 export { multiplication };
-export default multiplication;

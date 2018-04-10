@@ -1,4 +1,4 @@
-import preprocess from '../../src/preprocessors/index.es6';
+import { preprocess } from '../../src/preprocessors/index.es6';
 
 describe('测试预处理函数', () => {
     it('基本功能', () => {

@@ -1,4 +1,4 @@
-import subtraction from '../../src/operations/subtraction.es6';
+import { subtraction } from '../../src/operations/subtraction.es6';
 
 describe('测试减法操作函数', () => {
     it('基本功能', () => {

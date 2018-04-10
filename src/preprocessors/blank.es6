@@ -8,4 +8,3 @@ function blank(expression){
 }
 
 export { blank };
-export default blank;

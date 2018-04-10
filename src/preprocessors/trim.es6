@@ -8,4 +8,3 @@ function trim(val){
 }
 
 export { trim };
-export default trim;

@@ -50,8 +50,6 @@ function array2lrd(expression = []){
             default:
         }
     }
-    return result.concat(stack.reverse());
+    return [].concat(result, stack.reverse());
 }
 export { array2lrd };
-export default array2lrd;
-

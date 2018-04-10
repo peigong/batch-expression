@@ -1,5 +1,5 @@
 import ItemType from '../../src/enums/item-type.es6';
-import lrd2string from '../../src/parsers/lrd2string.es6';
+import { lrd2string } from '../../src/parsers/lrd2string.es6';
 
 describe('表达式从后根遍历（LRD）的形式转换成字符串', () => {
     it('完整功能 - (#foo#+2+#bar#*(#foobar#-#bar#))/#foo#', () => {

@@ -1,4 +1,4 @@
-import createSimpleCallback from '../../src/factory/simple.es6';
+import { createSimpleCallback } from '../../src/factory/simple.es6';
 
 describe('测试简单表达式回调生成函数', () => {
     let items;

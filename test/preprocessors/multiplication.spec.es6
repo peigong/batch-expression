@@ -1,4 +1,4 @@
-import multiplication from '../../src/preprocessors/multiplication.es6';
+import { multiplication } from '../../src/preprocessors/multiplication.es6';
 
 describe('测试乘法预处理函数', () => {
     it('基本功能', () => {

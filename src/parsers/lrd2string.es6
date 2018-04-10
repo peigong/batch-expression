@@ -23,5 +23,3 @@ function lrd2string(expression = []){
     }).join('');
 }
 export { lrd2string };
-export default lrd2string;
-

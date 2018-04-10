@@ -16,4 +16,3 @@ function createSimpleCallback(field = '', expression = ''){
 }
 
 export { createSimpleCallback };
-export default createSimpleCallback;

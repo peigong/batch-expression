@@ -1,4 +1,4 @@
-import blank from '../../src/preprocessors/blank.es6';
+import { blank } from '../../src/preprocessors/blank.es6';
 
 describe('测试空白预处理函数', () => {
     it('基本功能', () => {

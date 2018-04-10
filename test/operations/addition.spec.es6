@@ -1,4 +1,4 @@
-import addition from '../../src/operations/addition.es6';
+import { addition } from '../../src/operations/addition.es6';
 
 describe('测试加法操作函数', () => {
     it('基本功能', () => {

@@ -1,4 +1,4 @@
-import createMainGenerator from '../../src/factory/main.es6';
+import { createMainGenerator } from '../../src/factory/main.es6';
 
 describe('入口主函数测试', () => {
     let items, commands, createCallback;

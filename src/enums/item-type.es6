@@ -17,5 +17,4 @@ const Constant = 2;
  */
 const Field = 3;
 
-export { Operator, Constant, Field };
 export default { Operator, Constant, Field };

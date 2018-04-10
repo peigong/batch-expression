@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>批量数据表达式引擎</title>
+    <style type="text/css">
+    </style>
+    <script src="/vue.js"></script>
+    <script src="/iife.js"></script>
+</head>
+<body>
+    <div id="batch-expression-demo">
+        <select v-model="field">
+            <option :value="head.field" v-for="head of heads">{{ head.alias }}列</option>
+        </select>
+        <input type="text" placeholder="输入公式" v-model="expression">
+        <button type="button" @click="calculate">开始计算</button>
+        <button type="button" @click="clean">清除</button>
+        <hr>
+        <button type="button" @click="selectBtn(btn);" v-for="btn of buttons">{{ btn }}</button>
+        <hr>
+        <label>字符串表达式：</label>
+        <span>{{ lrdString }}</span>
+        <hr>
+        <label>数组表达式：</label>
+        <span>{{ lrdArray }}</span>
+        <hr>
+        <table>
+            <thead>
+                <tr>
+                    <th v-for="head of heads">
+                        <a @click.stop.prevent="selectCol(head);" href="">{{ head.alias }}</a>
+                    </th>
+                </tr>
+                <tr><th>列一</th><th>列二</th><th>列三</th></tr>
+            </thead>
+            <tbody>
+                <tr v-for="item of items">
+                    <td>{{ item.foo }}</td>
+                    <td>{{ item.bar }}</td>
+                    <td>{{ item.foobar }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="/stub.js"></script>
+</body>
+</html>
+

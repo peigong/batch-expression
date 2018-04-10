@@ -14,13 +14,14 @@ const $ = loadPlugins();
 const error = console.error.bind( console ); // eslint-disable-line no-console
 const clean = () => del([ conf.build.dest, conf.build.tmp ]);
 
+function stub(){
+    return gulp.src(['./node_modules/vue/dist/vue.js'])
+    .pipe(gulp.dest(conf.build.tmp));
+}
+export { stub };
+
 const cfgKarma = config.parseConfig(path.resolve('./karma.conf.js'));
 function test(done){
-    // runner.run(cfgKarma, (exitCode) => {
-    //     done();
-    //     process.exit(exitCode);
-    // });
-
     new Server(cfgKarma, (exitCode) => {
         done();
         process.exit(exitCode);
@@ -28,7 +29,7 @@ function test(done){
 }
 export { test };
 
-const build = gulp.series(clean, gulp.parallel(rollup.build), test);
+const build = gulp.series(clean, gulp.parallel(stub, rollup.build));
 
 export { build };
 export default build;

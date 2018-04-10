@@ -1,6 +1,6 @@
-import trim from './trim.es6';
-import blank from './blank.es6';
-import multiplication from './multiplication.es6';
+import { trim } from './trim.es6';
+import { blank } from './blank.es6';
+import { multiplication } from './multiplication.es6';
 
 function preprocess(expression){
     return [blank, multiplication]
@@ -8,5 +8,3 @@ function preprocess(expression){
 }
 
 export { trim, blank, multiplication, preprocess };
-export default preprocess;
-

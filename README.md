@@ -30,12 +30,16 @@
 
 ### util 辅助工具类 ###
 
-#### createColumnAlias 根据列的序号生成大写字母表示列别名 ####
+#### createColumnAlias(num) ####
+
+根据列的序号生成大写字母表示列别名。
 
  * @param num {Integer} 列的数字序号
  * @return {String} 列的别名
 
-#### createColumnAliasByIndex 根据列的索引生成大写字母表示列别名 ####
+#### createColumnAliasByIndex(idx) ####
+
+根据列的索引生成大写字母表示列别名。
 
  * @param idx {Integer} 列的数字索引
  * @return {String} 列的别名

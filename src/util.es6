@@ -1,4 +1,4 @@
-import { convertLRDArray, convertLRDString } from './parsers/index.es6';
+import { convertLRDArray, convertLRDSimpleArray, convertLRDString } from './parsers/index.es6';
 
 /**
  * 根据列的序号生成大写字母表示列别名
@@ -32,6 +32,7 @@ function createColumnAliasByIndex(idx){
 
 export default {
     convertLRDArray,
+    convertLRDSimpleArray,
     convertLRDString,
 
     createColumnAlias,

@@ -42,6 +42,10 @@
 
 将符合表达式规范的字符串转换为后根遍历的数组形式。
 
+#### function convertLRDSimpleArray(expression) ####
+
+将符合表达式规范的字符串转换为后根遍历的简单数组形式。
+
 #### function convertLRDString(expression) ####
 
 将符合表达式规范的字符串转换为后根遍历的字符串形式。

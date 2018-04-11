@@ -20,6 +20,7 @@
         data: {
             field: '',
             lrdArray: '',
+            lrdSimpleArray: '',
             lrdString: '',
             expression: '',
             buttons: buttons,
@@ -29,6 +30,7 @@
         methods: {
             clean: function(){
                 controller.lrdArray = '';
+                controller.lrdSimpleArray = '';
                 controller.lrdString = '';
                 controller.expression = '';
             },
@@ -52,8 +54,10 @@
                     var exp = expression.substring(1);
                     controller.lrdString = util.convertLRDString(exp);
                     controller.lrdArray = JSON.stringify(util.convertLRDArray(exp));
+                    controller.lrdSimpleArray = JSON.stringify(util.convertLRDSimpleArray(exp));
                 }else{
                     controller.lrdArray = '';
+                    controller.lrdSimpleArray = '';
                     controller.lrdString = '';
                 }
 

@@ -1,5 +1,7 @@
 # 批量数据表达式引擎 #
 
+![DEMO效果预览](./demo.png)
+
 ## 构建和测试 ##
 
 - 安装npm依赖：`npm install`
